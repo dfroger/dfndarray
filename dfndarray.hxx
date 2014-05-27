@@ -18,6 +18,12 @@
 
 namespace dfndarray {
 
+
+//===========================================================================
+// Error management.
+//===========================================================================
+
+
 // Exception.
 class DFArrayError: public std::exception {
 public:
@@ -42,6 +48,82 @@ dfa_assert_lt(const char* expr_a, const char* expr_b, size_t a, size_t b,
               const char* file, int line);
 
 
+//===========================================================================
+// Array 1D
+//===========================================================================
+
+
+// Base functor class to set array value from index.
+class Array1DComputeValue
+{
+    public:
+        virtual double operator() (size_t i0) = 0;
+};
+
+// Usefull functor for tests.
+class Array1DComputeTestValue: public Array1DComputeValue
+{
+    public:
+        virtual double operator() (size_t i0){return i0;};
+};
+
+
+template <typename T>
+class Array1D
+{
+    public:
+        Array1D();
+        Array1D(size_t n0);
+        ~Array1D();
+
+        friend std::ostream& operator<<(std::ostream& o, Array1D<T> const& array1d)
+        {
+            if (array1d.m_data) {
+                o << "<Array1d of shape (" << array1d.m_n0 << ")>";
+            } else {
+                o << "<Array1d not allocated>";
+            }
+            return o;
+        }
+
+        inline T operator()(size_t i0) const
+        {
+            DFA_ASSERT(m_data != NULL);
+            DFA_ASSERT_LT(i0,m_n0);
+            return m_data[i0];
+        }
+
+        void fill(Array1DComputeValue* f);
+
+        size_t dim(size_t idim)
+        {
+            DFA_ASSERT_LT(idim,1);
+            return m_dim[idim];
+        };
+
+        inline size_t n0() const
+        {
+            DFA_ASSERT(m_data != NULL);
+            return m_n0;
+        }
+
+        inline T* data() const {
+            DFA_ASSERT(m_data != NULL);
+            return m_data;
+        }
+
+    private:
+        size_t m_n0;
+        size_t m_dim[1];
+        T* m_data;
+};
+
+
+//===========================================================================
+// Array 2D
+//===========================================================================
+
+
 // Base functor class to set array value from index.
 class Array2DComputeValue
 {
@@ -56,7 +138,7 @@ class Array2DComputeTestValue: public Array2DComputeValue
         virtual double operator() (size_t i0, size_t i1){return i0*10. + i1;};
 };
 
-// Array2d class.
+
 template <typename T>
 class Array2D
 {
@@ -85,7 +167,11 @@ class Array2D
 
         void fill(Array2DComputeValue* f);
 
-        size_t dim(size_t idim){return m_dim[idim];};
+        size_t dim(size_t idim)
+        {
+            DFA_ASSERT_LT(idim,2);
+            return m_dim[idim];
+        };
 
         inline size_t n0() const
         {
