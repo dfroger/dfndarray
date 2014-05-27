@@ -87,9 +87,22 @@ class Array2D
 
         size_t dim(size_t idim){return m_dim[idim];};
 
-        inline size_t n0() const {return m_n0;}
-        inline size_t n1() const {return m_n1;}
-        inline T* data() const {return m_data;}
+        inline size_t n0() const
+        {
+            DFA_ASSERT(m_data != NULL);
+            return m_n0;
+        }
+
+        inline size_t n1() const {
+            DFA_ASSERT(m_data != NULL);
+            return m_n1;
+        }
+
+        inline T* data() const {
+            DFA_ASSERT(m_data != NULL);
+            return m_data;
+        }
+
     private:
         size_t m_n0;
         size_t m_n1;

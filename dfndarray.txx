@@ -38,6 +38,7 @@ template <typename T>
 void
 Array2D<T>::fill(Array2DComputeValue* f)
 {
+    DFA_ASSERT(m_data != NULL);
     size_t s0;
     for (size_t i0 = 0 ; i0 < m_n0 ; i0++) {
         s0 = i0*m_n1;

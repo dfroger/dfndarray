@@ -7,6 +7,7 @@ using namespace std;
 
 namespace dfndarray {
 
+// Error management.
 DFArrayError::DFArrayError():
   str_(NULL)
 {
