@@ -49,7 +49,7 @@ dfa_assert_lt(const char* expr_a, const char* expr_b, size_t a, size_t b,
 
 
 //===========================================================================
-// Array 1D
+// Array1D
 //===========================================================================
 
 
@@ -120,7 +120,7 @@ class Array1D
 
 
 //===========================================================================
-// Array 2D
+// Array2D
 //===========================================================================
 
 
@@ -193,6 +193,98 @@ class Array2D
         size_t m_n0;
         size_t m_n1;
         size_t m_dim[2];
+        T* m_data;
+};
+
+
+//===========================================================================
+// Array3D
+//===========================================================================
+
+
+// Base functor class to set array value from index.
+class Array3DComputeValue
+{
+    public:
+        virtual double operator() (size_t i0, size_t i1, size_t i2) = 0;
+};
+
+// Usefull functor for tests.
+class Array3DComputeTestValue: public Array3DComputeValue
+{
+    public:
+        virtual double operator() (size_t i0, size_t i1, size_t i2)
+        {
+            return i0*100. + i1*10 + i2;
+        };
+};
+
+
+template <typename T>
+class Array3D
+{
+    public:
+        Array3D();
+        Array3D(size_t n0, size_t n1, size_t n2);
+        ~Array3D();
+
+        friend std::ostream& operator<<(std::ostream& o, Array3D<T> const& array3d)
+        {
+            if (array3d.m_data) {
+                o << "<Array3d of shape (" 
+                  << array3d.m_n0 << "," 
+                  << array3d.m_n1 << "," 
+                  << array3d.m_n2 << ")>";
+            } else {
+                o << "<Array3d not allocated>";
+            }
+            return o;
+        }
+
+        inline T operator()(size_t i0, size_t i1, size_t i2) const
+        {
+            DFA_ASSERT(m_data != NULL);
+            DFA_ASSERT_LT(i0,m_n0);
+            DFA_ASSERT_LT(i1,m_n1);
+            DFA_ASSERT_LT(i2,m_n2);
+            return m_data[i0*m_n1n2 + i1*m_n2 + i2];
+        }
+
+        void fill(Array3DComputeValue* f);
+
+        size_t dim(size_t idim)
+        {
+            DFA_ASSERT_LT(idim,3);
+            return m_dim[idim];
+        };
+
+        inline size_t n0() const
+        {
+            DFA_ASSERT(m_data != NULL);
+            return m_n0;
+        }
+
+        inline size_t n1() const {
+            DFA_ASSERT(m_data != NULL);
+            return m_n1;
+        }
+
+        inline size_t n2() const {
+            DFA_ASSERT(m_data != NULL);
+            return m_n2;
+        }
+
+        inline T* data() const {
+            DFA_ASSERT(m_data != NULL);
+            return m_data;
+        }
+
+    private:
+        size_t m_n0;
+        size_t m_n1;
+        size_t m_n2;
+        size_t m_n1n2;
+        size_t m_dim[3];
         T* m_data;
 };
 
