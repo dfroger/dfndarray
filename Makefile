@@ -1,11 +1,16 @@
-main: main.o dfndarray.o dfndarray.hxx dfndarray.txx
-	g++ -g -o $@ main.o dfndarray.o
+default: test.x example.x
+
+test.x: test.o dfndarray.o dfndarray.hxx dfndarray.txx
+	g++ -g -o $@ test.o dfndarray.o
+
+example.x: example.o dfndarray.o dfndarray.hxx dfndarray.txx
+	g++ -g -o $@ example.o dfndarray.o
 
 %.o: %.cxx
 	g++ -g -c $<
 
-test: main
-	./main
+test: test.x
+	./test.x
 
 clean:
-	rm -f main *.o
+	rm -f *.x *.o

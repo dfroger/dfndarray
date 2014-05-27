@@ -11,6 +11,7 @@ using namespace std;
 template <typename T>
 Array1D<T>::Array1D(size_t n0):
     m_n0(n0),
+    m_size(n0),
     m_data(NULL)
 {
     m_dim[0] = n0;
@@ -20,6 +21,7 @@ Array1D<T>::Array1D(size_t n0):
 template <typename T>
 Array1D<T>::Array1D():
     m_n0(0),
+    m_size(0),
     m_data(NULL)
 {
     m_dim[0] = 0;
@@ -56,10 +58,12 @@ template <typename T>
 Array2D<T>::Array2D(size_t n0, size_t n1):
     m_n0(n0),
     m_n1(n1),
+    m_size(n0*n1),
     m_data(NULL)
 {
     m_dim[0] = n0;
     m_dim[1] = n1;
+    m_size(0),
     m_data = new T[n0*n1];
 }
 
@@ -110,6 +114,7 @@ Array3D<T>::Array3D(size_t n0, size_t n1, size_t n2):
     m_n1(n1),
     m_n2(n2),
     m_n1n2(n1*n2),
+    m_size(n0*n1*n2),
     m_data(NULL)
 {
     m_dim[0] = n0;
@@ -124,6 +129,7 @@ Array3D<T>::Array3D():
     m_n1(0),
     m_n2(0),
     m_n1n2(0),
+    m_size(0),
     m_data(NULL)
 {
     m_dim[0] = 0;

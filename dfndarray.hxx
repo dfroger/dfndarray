@@ -114,6 +114,12 @@ class Array1D
             return m_n0;
         }
 
+        inline size_t size() const
+        {
+            DFA_ASSERT(m_data != NULL);
+            return m_size;
+        }
+
         inline T* data() const {
             DFA_ASSERT(m_data != NULL);
             return m_data;
@@ -121,6 +127,7 @@ class Array1D
 
     private:
         size_t m_n0;
+        size_t m_size;
         size_t m_dim[1];
         T* m_data;
 };
@@ -199,6 +206,12 @@ class Array2D
             return m_n1;
         }
 
+        inline size_t size() const
+        {
+            DFA_ASSERT(m_data != NULL);
+            return m_size;
+        }
+
         inline T* data() const {
             DFA_ASSERT(m_data != NULL);
             return m_data;
@@ -207,6 +220,7 @@ class Array2D
     private:
         size_t m_n0;
         size_t m_n1;
+        size_t m_size;
         size_t m_dim[2];
         T* m_data;
 };
@@ -297,6 +311,12 @@ class Array3D
             return m_n2;
         }
 
+        inline size_t size() const
+        {
+            DFA_ASSERT(m_data != NULL);
+            return m_size;
+        }
+
         inline T* data() const {
             DFA_ASSERT(m_data != NULL);
             return m_data;
@@ -308,6 +328,7 @@ class Array3D
         size_t m_n2;
         size_t m_n1n2;
         size_t m_dim[3];
+        size_t m_size;
         T* m_data;
 };
 
