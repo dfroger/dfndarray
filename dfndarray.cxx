@@ -1,7 +1,7 @@
 #include <string.h>
 #include <sstream>
 
-#include "array2d.hxx"
+#include "dfndarray.hxx"
 
 using namespace std;
 

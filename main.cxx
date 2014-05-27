@@ -1,4 +1,4 @@
-#include "array2d.hxx"
+#include "dfndarray.hxx"
 
 #include <iostream>
 

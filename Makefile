@@ -1,5 +1,5 @@
-main: main.o array2d.o array2d.hxx array2d.txx
-	g++ -g -o $@ main.o array2d.o
+main: main.o dfndarray.o dfndarray.hxx dfndarray.txx
+	g++ -g -o $@ main.o dfndarray.o
 
 %.o: %.cxx
 	g++ -g -c $<

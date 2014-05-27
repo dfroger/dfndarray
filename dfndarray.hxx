@@ -1,5 +1,5 @@
-#ifndef ARRAY2D_HXX_INCLUDED
-#define ARRAY2D_HXX_INCLUDED
+#ifndef DFNDARRAY_HXX_INCLUDED
+#define DFNDARRAY_HXX_INCLUDED
 
 #include <iostream>
 #include <assert.h>
@@ -97,7 +97,7 @@ class Array2D
         T* m_data;
 };
 
-#include "array2d.txx"
+#include "dfndarray.txx"
 
 }
 
