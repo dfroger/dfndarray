@@ -93,6 +93,13 @@ class Array1D
             return m_data[i0];
         }
 
+        inline T& operator()(size_t i0)
+        {  
+            DFA_ASSERT(m_data != NULL);
+            DFA_ASSERT_LT(i0,m_n0);
+            return m_data[i0];
+        }
+
         void fill(Array1DComputeValue* f);
 
         size_t dim(size_t idim)
@@ -159,6 +166,14 @@ class Array2D
 
         inline T operator()(size_t i0, size_t i1) const
         {
+            DFA_ASSERT(m_data != NULL);
+            DFA_ASSERT_LT(i0,m_n0);
+            DFA_ASSERT_LT(i1,m_n1);
+            return m_data[i0*m_n1 + i1];
+        }
+
+        inline T& operator()(size_t i0, size_t i1)
+        {  
             DFA_ASSERT(m_data != NULL);
             DFA_ASSERT_LT(i0,m_n0);
             DFA_ASSERT_LT(i1,m_n1);
@@ -248,6 +263,14 @@ class Array3D
             DFA_ASSERT_LT(i1,m_n1);
             DFA_ASSERT_LT(i2,m_n2);
             return m_data[i0*m_n1n2 + i1*m_n2 + i2];
+        }
+
+        inline T& operator()(size_t i0, size_t i1, size_t i2)
+        {  
+            DFA_ASSERT(m_data != NULL);
+            DFA_ASSERT_LT(i0,m_n0);
+            DFA_ASSERT_LT(i1,m_n1);
+            return m_data[i0*m_n1n2 + i1*m_n0 + i2];
         }
 
         void fill(Array3DComputeValue* f);
