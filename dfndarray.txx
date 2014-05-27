@@ -1,3 +1,21 @@
+/*
+Copyright 2014 David Froger
+
+This file is part of dfndarray.
+
+dfndarray is free software: you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+dfndarray is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+dfndarray.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #include "dfndarray.hxx"
 
 using namespace std;
@@ -63,7 +81,6 @@ Array2D<T>::Array2D(size_t n0, size_t n1):
 {
     m_dim[0] = n0;
     m_dim[1] = n1;
-    m_size(0),
     m_data = new T[n0*n1];
 }
 
@@ -71,6 +88,7 @@ template <typename T>
 Array2D<T>::Array2D():
     m_n0(0),
     m_n1(0),
+    m_size(0),
     m_data(NULL)
 {
     m_dim[0] = 0;
