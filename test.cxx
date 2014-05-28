@@ -116,4 +116,7 @@ int main()
     } catch (dfndarray::DFArrayError& e) {
         cout << "G.allocate(4,2,3) : Exception catched: " << e.what() << endl;
     }
+
+    G.fill(15.);
+    cout << "G(2,1,1)    : " << G(2,1,1) << endl;
 }

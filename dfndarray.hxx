@@ -121,6 +121,7 @@ class Array1D
         }
 
         void fill(Array1DComputeValue* f);
+        void fill(T value);
 
         size_t dim(size_t idim)
         {
@@ -212,6 +213,7 @@ class Array2D
         }
 
         void fill(Array2DComputeValue* f);
+        void fill(T value);
 
         size_t dim(size_t idim)
         {
@@ -316,6 +318,7 @@ class Array3D
         }
 
         void fill(Array3DComputeValue* f);
+        void fill(T value);
 
         size_t dim(size_t idim)
         {

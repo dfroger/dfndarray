@@ -77,6 +77,15 @@ Array1D<T>::fill(Array1DComputeValue* f)
     }
 }
 
+template <typename T>
+void
+Array1D<T>::fill(T value)
+{
+    DFA_ASSERT(m_data != NULL);
+    for (T* p = m_data ; p < m_data+m_size ; p++)
+        *p = value;
+}
+
 
 //===========================================================================
 // Array 2D
@@ -143,6 +152,15 @@ Array2D<T>::fill(Array2DComputeValue* f)
             m_data[s0 + i1] = f->operator()(i0,i1);
         }
     }
+}
+
+template <typename T>
+void
+Array2D<T>::fill(T value)
+{
+    DFA_ASSERT(m_data != NULL);
+    for (T* p = m_data ; p < m_data+m_size ; p++)
+        *p = value;
 }
 
 
@@ -225,4 +243,13 @@ Array3D<T>::fill(Array3DComputeValue* f)
             }
         }
     }
+}
+
+template <typename T>
+void
+Array3D<T>::fill(T value)
+{
+    DFA_ASSERT(m_data != NULL);
+    for (T* p = m_data ; p < m_data+m_size ; p++)
+        *p = value;
 }
