@@ -14,6 +14,8 @@
 #You should have received a copy of the GNU General Public License along with
 #dfndarray.  If not, see <http://www.gnu.org/licenses/>.
 
+#Home page: https://github.com/dfroger/dfndarray
+
 default: test.x example.x
 
 test.x: test.o dfndarray.o dfndarray.hxx dfndarray.txx
