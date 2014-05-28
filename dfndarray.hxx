@@ -96,12 +96,18 @@ class Array1D
         void
         allocate(size_t n0);
 
+        void
+        resize(size_t n0);
+
         friend std::ostream& operator<<(std::ostream& o, Array1D<T> const& array1d)
         {
             if (array1d.m_data) {
-                o << "<Array1d of shape (" << array1d.m_n0 << ")>";
+                o << "<Array1D of shape ("
+                  << array1d.m_n0 << ") "
+                  << "at " << array1d.m_data
+                  << ">" << std::endl;
             } else {
-                o << "<Array1d not allocated>";
+                o << "<Array1D not allocated>";
             }
             return o;
         }
@@ -185,13 +191,20 @@ class Array2D
         void
         allocate(size_t n0, size_t n1);
 
+        void
+        resize(size_t n0, size_t n1);
+
         friend std::ostream&
         operator<<(std::ostream& o, Array2D<T> const& array2d)
         {
             if (array2d.m_data) {
-                o << "<Array2d of shape (" << array2d.m_n0 << "," << array2d.m_n1 << ")>";
+                o << "<Array2D of shape ("
+                  << array2d.m_n0 << ","
+                  << array2d.m_n1 << ") "
+                  << "at " << array2d.m_data
+                  << ">" << std::endl;
             } else {
-                o << "<Array2d not allocated>";
+                o << "<Array2D not allocated>";
             }
             return o;
         }
@@ -286,16 +299,21 @@ class Array3D
         void
         allocate(size_t n0, size_t n1, size_t n2);
 
+        void
+        resize(size_t n0, size_t n1, size_t n2);
+
         friend std::ostream&
         operator<<(std::ostream& o, Array3D<T> const& array3d)
         {
             if (array3d.m_data) {
-                o << "<Array3d of shape (" 
+                o << "<Array3D of shape (" 
                   << array3d.m_n0 << "," 
                   << array3d.m_n1 << "," 
-                  << array3d.m_n2 << ")>";
+                  << array3d.m_n2 << ") "
+                  << "at " << array3d.m_data
+                  << ">" << std::endl;
             } else {
-                o << "<Array3d not allocated>";
+                o << "<Array3D not allocated>";
             }
             return o;
         }
@@ -314,7 +332,7 @@ class Array3D
             DFA_ASSERT(m_data != NULL);
             DFA_ASSERT_LT(i0,m_n0);
             DFA_ASSERT_LT(i1,m_n1);
-            return m_data[i0*m_n1n2 + i1*m_n0 + i2];
+            return m_data[i0*m_n1n2 + i1*m_n2 + i2];
         }
 
         void fill(Array3DComputeValue* f);

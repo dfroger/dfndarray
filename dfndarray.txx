@@ -16,6 +16,8 @@ You should have received a copy of the GNU General Public License along with
 dfndarray.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <string.h>
+
 #include "dfndarray.hxx"
 
 using namespace std;
@@ -64,6 +66,34 @@ Array1D<T>::allocate(size_t n0)
     m_size = n0;
     m_dim[0] = n0;
     m_data = new T[n0];
+}
+
+template <typename T>
+void
+Array1D<T>::resize(size_t n0)
+{
+    DFA_ASSERT(m_data != NULL);
+
+    m_n0 = n0;
+    m_dim[0] = n0;
+
+    size_t size = n0;
+    if (size == m_size) 
+        return;
+
+    T* data = new T[n0];
+    if (size < m_size) {
+        memcpy(data, m_data, size*sizeof(T));
+    } else {
+        memcpy(data, m_data, m_size*sizeof(T));
+        for (T* p = data+m_size+1 ; p < data+size ; p++) {
+            *p = T();
+        }
+    }
+    
+    m_size = size;
+    if (m_data) delete[] m_data;
+    m_data = data;
 }
 
 // Fill function.
@@ -139,6 +169,36 @@ Array2D<T>::allocate(size_t n0, size_t n1)
     m_data = new T[n0*n1];
 }
 
+template <typename T>
+void
+Array2D<T>::resize(size_t n0, size_t n1)
+{
+    DFA_ASSERT(m_data != NULL);
+
+    m_n0 = n0;
+    m_n1 = n1;
+    m_dim[0] = n0;
+    m_dim[1] = n1;
+
+    size_t size = n0*n1;
+    if (size == m_size) 
+        return;
+
+    T* data = new T[n0*n1];
+    if (size < m_size) {
+        memcpy(data, m_data, size*sizeof(T));
+    } else {
+        memcpy(data, m_data, m_size*sizeof(T));
+        for (T* p = data+m_size+1 ; p < data+size ; p++) {
+            *p = T();
+        }
+    }
+    
+    m_size = size;
+    if (m_data) delete[] m_data;
+    m_data = data;
+}
+
 // Fill function.
 template <typename T>
 void
@@ -179,7 +239,6 @@ Array3D<T>::Array3D(size_t n0, size_t n1, size_t n2):
     m_size(n0*n1*n2),
     m_data(NULL)
 {
-    cout << "Array3D(size_t n0, size_t n1, size_t n2)" << endl;
     m_dim[0] = n0;
     m_dim[1] = n1;
     m_dim[2] = n2;
@@ -195,7 +254,6 @@ Array3D<T>::Array3D():
     m_size(0),
     m_data(NULL)
 {
-    cout << "Array3D()" << endl;
     m_dim[0] = 0;
     m_dim[1] = 0;
     m_dim[2] = 0;
@@ -225,6 +283,39 @@ Array3D<T>::allocate(size_t n0, size_t n1, size_t n2)
     m_dim[1] = n1;
     m_dim[2] = n2;
     m_data = new T[n0*n1*n2];
+}
+
+template <typename T>
+void
+Array3D<T>::resize(size_t n0, size_t n1, size_t n2)
+{
+    DFA_ASSERT(m_data != NULL);
+
+    m_n0 = n0;
+    m_n1 = n1;
+    m_n2 = n2;
+    m_n1n2 = n1*n2;
+    m_dim[0] = n0;
+    m_dim[1] = n1;
+    m_dim[2] = n2;
+
+    size_t size = n0*n1*n2;
+    if (size == m_size) 
+        return;
+
+    T* data = new T[n0*n1*n2];
+    if (size < m_size) {
+        memcpy(data, m_data, size*sizeof(T));
+    } else {
+        memcpy(data, m_data, m_size*sizeof(T));
+        for (T* p = data+m_size+1 ; p < data+size ; p++) {
+            *p = T();
+        }
+    }
+    
+    m_size = size;
+    if (m_data) delete[] m_data;
+    m_data = data;
 }
 
 // Fill function.
