@@ -54,6 +54,18 @@ Array1D<T>::~Array1D()
     }
 }
 
+// Initialization.
+template <typename T>
+void
+Array1D<T>::allocate(size_t n0)
+{
+    DFA_ASSERT(m_data == NULL);
+    m_n0 = n0;
+    m_size = n0;
+    m_dim[0] = n0;
+    m_data = new T[n0];
+}
+
 // Fill function.
 template <typename T>
 void
@@ -104,6 +116,20 @@ Array2D<T>::~Array2D()
     }
 }
 
+// Initialization.
+template <typename T>
+void
+Array2D<T>::allocate(size_t n0, size_t n1)
+{
+    DFA_ASSERT(m_data == NULL);
+    m_n0 = n0;
+    m_n1 = n1;
+    m_size = n0*n1;
+    m_dim[0] = n0;
+    m_dim[1] = n1;
+    m_data = new T[n0*n1];
+}
+
 // Fill function.
 template <typename T>
 void
@@ -135,6 +161,7 @@ Array3D<T>::Array3D(size_t n0, size_t n1, size_t n2):
     m_size(n0*n1*n2),
     m_data(NULL)
 {
+    cout << "Array3D(size_t n0, size_t n1, size_t n2)" << endl;
     m_dim[0] = n0;
     m_dim[1] = n1;
     m_dim[2] = n2;
@@ -150,6 +177,7 @@ Array3D<T>::Array3D():
     m_size(0),
     m_data(NULL)
 {
+    cout << "Array3D()" << endl;
     m_dim[0] = 0;
     m_dim[1] = 0;
     m_dim[2] = 0;
@@ -162,6 +190,23 @@ Array3D<T>::~Array3D()
     if (m_data) {
         delete[] m_data;
     }
+}
+
+// Initialization.
+template <typename T>
+void
+Array3D<T>::allocate(size_t n0, size_t n1, size_t n2)
+{
+    DFA_ASSERT(m_data == NULL);
+    m_n0 = n0;
+    m_n1 = n1;
+    m_n2 = n2;
+    m_n1n2 = n1*n2;
+    m_size = n0*n1*n2;
+    m_dim[0] = n0;
+    m_dim[1] = n1;
+    m_dim[2] = n2;
+    m_data = new T[n0*n1*n2];
 }
 
 // Fill function.

@@ -106,4 +106,14 @@ int main()
     } catch (dfndarray::DFArrayError& e) {
         cout << "E(10,10,10) : Exception catched: " << e.what() << endl;
     }
+
+    dfndarray::Array3D<double> G;
+    cout << "G           : " << G << endl;
+    G.allocate(4,2,3);
+    cout << "G           : " << G << endl;
+    try {
+        G.allocate(4,2,3);
+    } catch (dfndarray::DFArrayError& e) {
+        cout << "G.allocate(4,2,3) : Exception catched: " << e.what() << endl;
+    }
 }

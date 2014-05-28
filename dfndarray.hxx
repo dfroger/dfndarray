@@ -93,6 +93,9 @@ class Array1D
         Array1D(size_t n0);
         ~Array1D();
 
+        void
+        allocate(size_t n0);
+
         friend std::ostream& operator<<(std::ostream& o, Array1D<T> const& array1d)
         {
             if (array1d.m_data) {
@@ -178,7 +181,11 @@ class Array2D
         Array2D(size_t n0, size_t n1);
         ~Array2D();
 
-        friend std::ostream& operator<<(std::ostream& o, Array2D<T> const& array2d)
+        void
+        allocate(size_t n0, size_t n1);
+
+        friend std::ostream&
+        operator<<(std::ostream& o, Array2D<T> const& array2d)
         {
             if (array2d.m_data) {
                 o << "<Array2d of shape (" << array2d.m_n0 << "," << array2d.m_n1 << ")>";
@@ -274,7 +281,11 @@ class Array3D
         Array3D(size_t n0, size_t n1, size_t n2);
         ~Array3D();
 
-        friend std::ostream& operator<<(std::ostream& o, Array3D<T> const& array3d)
+        void
+        allocate(size_t n0, size_t n1, size_t n2);
+
+        friend std::ostream&
+        operator<<(std::ostream& o, Array3D<T> const& array3d)
         {
             if (array3d.m_data) {
                 o << "<Array3d of shape (" 
