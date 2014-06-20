@@ -1,0 +1,13 @@
+package:
+  name: dfndarray
+  version: 0.0.0
+
+source:
+  git_url: https://github.com/dfroger/dfndarray
+
+build:
+  number: 0
+
+about:
+  home: https://github.com/dfroger/dfndarray
+  license: GPL
