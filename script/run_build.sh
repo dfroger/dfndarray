@@ -1,0 +1,2 @@
+cd dfndarray
+../waf build

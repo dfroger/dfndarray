@@ -1,4 +1,4 @@
 language: cpp
 compiler:
     - gcc
-script: make test
+script: ./script/run_build.sh

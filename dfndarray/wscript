@@ -1,0 +1,11 @@
+def options(opt):
+        opt.load('compiler_cxx')
+
+def configure(conf):
+        conf.load('compiler_cxx')
+
+def build(bld):
+        bld.shlib(source='dfndarray.cxx', target='dfndarray')
+        bld.install_files('${PREFIX}/include', 'dfndarray.hxx dfndarray.txx')
+
+
