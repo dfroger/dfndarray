@@ -1,9 +1,24 @@
+from os.path import join
+
 def options(opt):
-        opt.load('compiler_cxx')
+    opt.load('compiler_cxx')
+    opt.add_option('--miniconda', action='store', default='',
+        help='Search libraries in this miniconda directory.')
 
 def configure(conf):
-        conf.load('compiler_cxx')
+    conf.load('compiler_cxx')
+    miniconda_inc = join(conf.options.miniconda, 'include')
+    miniconda_lib = join(conf.options.miniconda, 'lib')
+    conf.env.prepend_value('INCLUDES', [miniconda_inc])
+    conf.env.prepend_value('LIBPATH', [miniconda_lib])
+    conf.env.prepend_value('RPATH', [miniconda_lib])
+    conf.check(header_name='dfndarray.hxx', features='cxx cprogram')
+    conf.check_cxx(lib='dfndarray')
 
 def build(bld):
-        bld.program(source='test.cxx', target='main', lib='dfndarray')
+    bld.program(
+        source='test.cxx',
+        target='main',
+        lib='dfndarray',
+    )
 

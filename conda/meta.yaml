@@ -6,7 +6,7 @@ source:
   git_url: https://github.com/dfroger/dfndarray
 
 build:
-  number: 0
+  number: 1
 
 about:
   home: https://github.com/dfroger/dfndarray
