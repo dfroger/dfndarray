@@ -1,8 +1,9 @@
 os:
   - linux
-  - osx 
+  - osx
 
 language: cpp
+
 compiler:
   - gcc
 
@@ -23,14 +24,14 @@ install:
 
 script:
   - cd test
-  - ../waf configure --miniconda=$HOME/miniconda/envs/test-environment
-  - ../waf build
+  - "../waf configure --miniconda=$HOME/miniconda/envs/test-environment"
+  - "../waf build"
   - build/main
 
-deploy:
-  provider: releases
-  api_key:
-    secure: TFLHTEE1z2KpKHD4yt+Pq0J49GvTQjMuBEz7D6jHmzRPJfWcAiP0UlL7gTBYPR4oQLeCAdrEQIDoZ+okH6Ans8gAv6LGuHQfz6bGpHGi8yHW5CAH6kaApem2sUBVe9/RNe+vIQXl1ghG3VYZYDDtOlnIC7eyQ060EskPGa9XcV0=
-  file: dfndarray-0.0.0-0.tar.bz2
-  on:
-    repo: dfroger/dfndarray
+env:
+  global:
+    secure: "f3KQa1k0SBCApTADwJVvtIW6ra19/ZCJD2f25ad1B9uqG65PeIrwIIO26p3jgFeKRQ3Zm8qXXFtVMMBSdVDFkA6aHMUiTGChVGiBRL5KIKJBDZN4GEfL3z7m4aFPpuui+AoR+uEb8sKdzAs1pF9cy2Oeb8UA1TiIhzEuZpAf4Zg="
+    secure: "dYRfkS76pIBQ+o79FGeLGMVE1uEv2EXju7uQk9frHyqenSYAJqFtct/F8LZRaVrMqJ1dx3O5+RImFgHCrrmohAnf6IMtDkIjpA9ZVdj72Wp+De6SGZVTxJsSWN7V4gyn1C/mVktXQlCUStCpOyDqQXJhlZ4BLWHOh0MtPGqRT8Y="
+    secure: "LsYrCO/40YhrvtbqTgJkcx2LT+1si4BPdunvH/gf0hs2/qlWhQ//sNorAo2b5Jfj/zmFKVM0/YPGkFrDZ9Uy0sGij8t4yEydtY/XSib9ChHqciiJ0FFeYgZWf2g//JXlk6ijoec+e+dnxKNt0+iZ5n8ocIAC1z24kb+9EYzkk/A="
+
+after_success: curl --ftp-create-dirs --upload-file $HOME/miniconda/pkgs/dfndarray-0.0.0-1.tar.bz2 --user $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST/conda/dfndarray/dfndarray-0.0.0-1.tar.bz2
