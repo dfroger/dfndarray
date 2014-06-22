@@ -23,8 +23,8 @@ install:
 
 script:
   - cd test
-  - waf configure --miniconda=$HOME/miniconda
-  - waf build
+  - ../waf configure --miniconda=$HOME/miniconda
+  - ../waf build
   - build/main
 
 deploy:
