@@ -1,4 +1,35 @@
+os:
+  - linux
+  - osx 
+
 language: cpp
 compiler:
-    - gcc
-script: ./script/run_build.sh
+  - gcc
+
+install:
+  - sudo apt-get update
+  - wget http://repo.continuum.io/miniconda/Miniconda-3.4.2-Linux-x86_64.sh -O miniconda.sh
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - export PATH="$HOME/miniconda/bin:$PATH"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update conda
+  - conda info -a
+  - conda create -n test-environment python=2.7 swig
+  - source activate test-environment
+  - conda build conda
+  - conda install dfndarray --use-local
+
+script:
+  - cd test
+  - waf configure --miniconda=$HOME/miniconda
+  - waf build
+  - build/main
+
+deploy:
+  provider: releases
+  api_key:
+    secure: TFLHTEE1z2KpKHD4yt+Pq0J49GvTQjMuBEz7D6jHmzRPJfWcAiP0UlL7gTBYPR4oQLeCAdrEQIDoZ+okH6Ans8gAv6LGuHQfz6bGpHGi8yHW5CAH6kaApem2sUBVe9/RNe+vIQXl1ghG3VYZYDDtOlnIC7eyQ060EskPGa9XcV0=
+  file: dfndarray-0.0.0-0.tar.bz2
+  on:
+    repo: dfroger/dfndarray
