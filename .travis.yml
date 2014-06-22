@@ -30,7 +30,7 @@ script:
 
 env:
   global:
-    secure: "efX//1TLwHg8u4Nzf5vtEPS/B06AzFVnnAGv7phOzDg9Ou5KVPkzi+UIvxudjCLrZOc+1x7aUzxfxMsfF9pFVb9vkUNmJosqu4Ap1TK8ovq0Lp6oQ/nM72ADWUcHEk070ATs1iQZxXt5oucDl1WECjKVweaMfMNW1dwxDGmIQxI="
-    secure: "Pz9lZHH+BOPVdQIAdFq/lRR1iFqrksKmB4BUc7bQmhocq9HUB1pn3dMj04lzVBJGuSIhdfXdimSs9cN6Q/dUqxkQHxYNtG1fXADm0IgpQahvWC9oOKnlP7yqg1Th3f1rBMnf04WBQTE+O7QHlT04E80Pq5w0qH9CFGSTwJCWLDU="
+    - secure: "efX//1TLwHg8u4Nzf5vtEPS/B06AzFVnnAGv7phOzDg9Ou5KVPkzi+UIvxudjCLrZOc+1x7aUzxfxMsfF9pFVb9vkUNmJosqu4Ap1TK8ovq0Lp6oQ/nM72ADWUcHEk070ATs1iQZxXt5oucDl1WECjKVweaMfMNW1dwxDGmIQxI="
+    - secure: "Pz9lZHH+BOPVdQIAdFq/lRR1iFqrksKmB4BUc7bQmhocq9HUB1pn3dMj04lzVBJGuSIhdfXdimSs9cN6Q/dUqxkQHxYNtG1fXADm0IgpQahvWC9oOKnlP7yqg1Th3f1rBMnf04WBQTE+O7QHlT04E80Pq5w0qH9CFGSTwJCWLDU="
 
 after_success: curl --ftp-create-dirs --upload-file $HOME/miniconda/pkgs/dfndarray-0.0.0-1.tar.bz2 --user $FTP_USER:$FTP_PASSWORD ftp://dfroger.dyndns.org/conda/dfndarray/dfndarray-0.0.0-1.tar.bz2
