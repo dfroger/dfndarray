@@ -15,7 +15,8 @@ install:
   - conda config --set always_yes yes --set changeps1 no
   - conda update conda
   - conda info -a
-  - conda create -n test-environment python=2.7 swig conda-build
+  - conda install conda-build
+  - conda create -n test-environment python=2.7 swig
   - source activate test-environment
   - conda build conda
   - conda install dfndarray --use-local
