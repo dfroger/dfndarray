@@ -30,8 +30,8 @@ script:
 
 env:
   global:
-    secure: "f3KQa1k0SBCApTADwJVvtIW6ra19/ZCJD2f25ad1B9uqG65PeIrwIIO26p3jgFeKRQ3Zm8qXXFtVMMBSdVDFkA6aHMUiTGChVGiBRL5KIKJBDZN4GEfL3z7m4aFPpuui+AoR+uEb8sKdzAs1pF9cy2Oeb8UA1TiIhzEuZpAf4Zg="
-    secure: "dYRfkS76pIBQ+o79FGeLGMVE1uEv2EXju7uQk9frHyqenSYAJqFtct/F8LZRaVrMqJ1dx3O5+RImFgHCrrmohAnf6IMtDkIjpA9ZVdj72Wp+De6SGZVTxJsSWN7V4gyn1C/mVktXQlCUStCpOyDqQXJhlZ4BLWHOh0MtPGqRT8Y="
     secure: "LsYrCO/40YhrvtbqTgJkcx2LT+1si4BPdunvH/gf0hs2/qlWhQ//sNorAo2b5Jfj/zmFKVM0/YPGkFrDZ9Uy0sGij8t4yEydtY/XSib9ChHqciiJ0FFeYgZWf2g//JXlk6ijoec+e+dnxKNt0+iZ5n8ocIAC1z24kb+9EYzkk/A="
+    secure: "f3KQa1k0SBCApTADwJVvtIW6ra19/ZCJD2f25ad1B9uqG65PeIrwIIO26p3jgFeKRQ3Zm8qXXFtVMMBSdVDFkA6aHMUiTGChVGiBRL5KIKJBDZN4GEfL3z7m4aFPpuui+AoR+uEb8sKdzAs1pF9cy2Oeb8UA1TiIhzEuZpAf4Zg="
+    secure: "kEFS6rFoLI7WgZw7K/nLuH6tkYNQD2juL14TQor6M8xlinLlyLSylT1IGHlvpnUBFoYNSbJjJctz1XR/x7gIRrPt9VllL85l8FOxhPQIFIXWQhFUxej13i428vOHWvQxD6QjWtz2vqy45aHai9goZk78VKidAqGoOXcxVop5TH0="
 
 after_success: curl --ftp-create-dirs --upload-file $HOME/miniconda/pkgs/dfndarray-0.0.0-1.tar.bz2 --user $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST/conda/dfndarray/dfndarray-0.0.0-1.tar.bz2
