@@ -4,10 +4,11 @@ package:
 
 requirements:
   build:
-    - python
+    - python=2.7
     #- swig # todo: use conda SWIG (currently bugged)
     - numpy
   run:
+    - python=2.7
     - numpy
 
 source:
