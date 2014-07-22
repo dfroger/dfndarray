@@ -1,3 +1,7 @@
 0.0.1:
   - Updates in conda build.
   - Updates in travis ci.
+
+0.0.2:
+  - Add Python bindings.
+  - Add unit tests.

@@ -82,6 +82,8 @@ class TestArray2DBase:
         self.assertEqual(self.a.dim(1), 4)
         self.assertEqual(self.a.size(), 8)
 
+    def test_reallocate(self):
+        self.assertRaises(RuntimeError,self.a.allocate,4,4)
 
 class TestArray2DAllocateConstructor(unittest.TestCase, TestArray2DBase):
     """Test Array2D allocated in constructor"""
