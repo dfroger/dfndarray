@@ -2,6 +2,13 @@ package:
   name: dfndarray
   version: 0.0.1
 
+requirements:
+  build:
+    - python
+    #- swig # todo: use conda SWIG (currently bugged)
+    - numpy
+  run:
+
 source:
   git_url: https://github.com/dfroger/dfndarray
 

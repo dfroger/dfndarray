@@ -1,4 +1,4 @@
 cd dfndarray
-../waf configure --prefix=$PREFIX
-../waf build
-../waf install
+$PYTHON ../waf configure --prefix=$PREFIX --python-bindings
+$PYTHON ../waf build
+$PYTHON ../waf install
