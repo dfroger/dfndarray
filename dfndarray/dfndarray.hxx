@@ -23,8 +23,8 @@ Home page: https://github.com/dfroger/dfndarray
 
 #include <iostream>
 
-// Error management macro, deactivated with NDEBUG preprocessor macro.
-#ifdef NDEBUG
+// Error management macro, deactivated with DF_NO_RUNTIME_CHECK preprocessor macro.
+#ifdef DF_NO_RUNTIME_CHECK
 #define DFA_ASSERT(test)
 #define DFA_ASSERT_EQUAL(a,b)
 #define DFA_ASSERT_LT(a,b)
@@ -107,7 +107,7 @@ class Array1D
                 o << "<Array1D of shape ("
                   << array1d.m_n0 << ") "
                   << "at " << array1d.m_data
-                  << ">" << std::endl;
+                  << ">";
             } else {
                 o << "<Array1D not allocated>";
             }
@@ -204,7 +204,7 @@ class Array2D
                   << array2d.m_n0 << ","
                   << array2d.m_n1 << ") "
                   << "at " << array2d.m_data
-                  << ">" << std::endl;
+                  << ">";
             } else {
                 o << "<Array2D not allocated>";
             }
@@ -313,7 +313,7 @@ class Array3D
                   << array3d.m_n1 << "," 
                   << array3d.m_n2 << ") "
                   << "at " << array3d.m_data
-                  << ">" << std::endl;
+                  << ">";
             } else {
                 o << "<Array3D not allocated>";
             }

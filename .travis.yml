@@ -29,6 +29,7 @@ script:
   - "python ../waf build"
   - build/main
   - python -c 'import dfndarray'
+  - python test_dfndarray.py
 
 env:
   global:
