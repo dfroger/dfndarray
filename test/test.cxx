@@ -27,34 +27,6 @@ using namespace std;
 int main()
 {
     //===========================================================================
-    // Array 1D
-    //===========================================================================
-
-
-    dfndarray::Array1D<double> A(4);
-    dfndarray::Array1DComputeValue* f = new dfndarray::Array1DComputeTestValue();
-    A.fill(f);
-
-    dfndarray::Array1D<double> B;
-
-    cout << "------------------- Array 1D -------------------" << endl;
-    cout << "B            : " << B << endl;
-    try {
-        cout << B(1) << endl;
-    } catch (dfndarray::DFArrayError& e) {
-        cout << "B(1)         : Exception catched: " << e.what() << endl;
-    }
-    cout << "A            : " << A << endl;
-    cout << "A(1)         : " << A(1) << endl;
-    cout << "A.dim(0)     : " << A.dim(0) << endl;
-    try {
-        cout << A(10) << endl;
-    } catch (dfndarray::DFArrayError& e) {
-        cout << "A(10)        : Exception catched: " << e.what() << endl;
-    }
-
-
-    //===========================================================================
     // Array 2D
     //===========================================================================
 

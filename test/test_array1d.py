@@ -15,13 +15,9 @@ class TestArray1DBase:
         self.assertEqual(self.a[2], 2.)
         self.assertEqual(self.a[3], 3.)
 
-    def test_n0(self):
-        self.assertEqual(self.a.n0(), 4)
-
-    def test_dim(self):
-        self.assertEqual(self.a.dim(0), 4)
-
     def test_size(self):
+        self.assertEqual(self.a.n0(), 4)
+        self.assertEqual(self.a.dim(0), 4)
         self.assertEqual(self.a.size(), 4)
 
     def test_out_of_bounds(self):
@@ -103,13 +99,9 @@ class TestArray1DNotAllocated(unittest.TestCase):
     def test_getitem(self):
         self.assertRaises(RuntimeError,self.a.__getitem__,0)
 
-    def test_n0(self):
-        self.assertEqual(self.a.dim(0), 0)
-
-    def test_dim(self):
-        self.assertEqual(self.a.dim(0), 0)
-
     def test_size(self):
+        self.assertEqual(self.a.n0(), 0)
+        self.assertEqual(self.a.dim(0), 0)
         self.assertEqual(self.a.size(), 0)
 
     def test_fill(self):
