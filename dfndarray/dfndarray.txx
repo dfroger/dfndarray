@@ -88,7 +88,7 @@ Array1D<T>::resize(size_t n0)
         memcpy(data, m_data, size*sizeof(T));
     } else {
         memcpy(data, m_data, m_size*sizeof(T));
-        for (T* p = data+m_size+1 ; p < data+size ; p++) {
+        for (T* p = data+m_size ; p < data+size ; p++) {
             *p = T();
         }
     }
@@ -191,7 +191,7 @@ Array2D<T>::resize(size_t n0, size_t n1)
         memcpy(data, m_data, size*sizeof(T));
     } else {
         memcpy(data, m_data, m_size*sizeof(T));
-        for (T* p = data+m_size+1 ; p < data+size ; p++) {
+        for (T* p = data+m_size ; p < data+size ; p++) {
             *p = T();
         }
     }
@@ -310,7 +310,7 @@ Array3D<T>::resize(size_t n0, size_t n1, size_t n2)
         memcpy(data, m_data, size*sizeof(T));
     } else {
         memcpy(data, m_data, m_size*sizeof(T));
-        for (T* p = data+m_size+1 ; p < data+size ; p++) {
+        for (T* p = data+m_size ; p < data+size ; p++) {
             *p = T();
         }
     }

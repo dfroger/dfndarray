@@ -139,13 +139,11 @@ class Array1D
 
         inline size_t n0() const
         {
-            DFA_ASSERT(m_data != NULL);
             return m_n0;
         }
 
         inline size_t size() const
         {
-            DFA_ASSERT(m_data != NULL);
             return m_size;
         }
 
@@ -238,18 +236,15 @@ class Array2D
 
         inline size_t n0() const
         {
-            DFA_ASSERT(m_data != NULL);
             return m_n0;
         }
 
         inline size_t n1() const {
-            DFA_ASSERT(m_data != NULL);
             return m_n1;
         }
 
         inline size_t size() const
         {
-            DFA_ASSERT(m_data != NULL);
             return m_size;
         }
 
@@ -348,23 +343,19 @@ class Array3D
 
         inline size_t n0() const
         {
-            DFA_ASSERT(m_data != NULL);
             return m_n0;
         }
 
         inline size_t n1() const {
-            DFA_ASSERT(m_data != NULL);
             return m_n1;
         }
 
         inline size_t n2() const {
-            DFA_ASSERT(m_data != NULL);
             return m_n2;
         }
 
         inline size_t size() const
         {
-            DFA_ASSERT(m_data != NULL);
             return m_size;
         }
 
