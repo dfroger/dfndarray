@@ -31,6 +31,7 @@ script:
   - python -c 'import dfndarray'
   - python test_array1d.py
   - python test_array2d.py
+  - python test_array3d.py
 
 env:
   global:
