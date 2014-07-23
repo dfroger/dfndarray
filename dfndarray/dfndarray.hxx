@@ -329,6 +329,7 @@ class Array3D
             DFA_ASSERT(m_data != NULL);
             DFA_ASSERT_LT(i0,m_n0);
             DFA_ASSERT_LT(i1,m_n1);
+            DFA_ASSERT_LT(i2,m_n2);
             return m_data[i0*m_n1n2 + i1*m_n2 + i2];
         }
 
