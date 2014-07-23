@@ -1,0 +1,12 @@
+- Fill CHANGELOG
+
+- Update version number in:
+  - dfndarray/wscript
+  - .travis.yml
+  - conda/meta.yml
+  - git commit -m 'Update version number to 0.1.0.'
+
+- tag git:
+      git git tag -a v0.1.0 -m 'version 0.1.0'
+
+- build and upload conda package

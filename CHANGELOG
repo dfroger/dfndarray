@@ -5,4 +5,4 @@
 0.1.0:
   - Add Python bindings.
   - Add unit tests.
-  - resize allocates an unallocated array, instead of being an error.
+  - resize now allocates unallocated array, instead of being an error.
