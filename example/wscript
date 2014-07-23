@@ -17,7 +17,7 @@ def configure(conf):
 
 def build(bld):
     bld.program(
-        source='test.cxx',
+        source='example.cxx',
         target='main',
         lib='dfndarray',
     )

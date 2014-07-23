@@ -24,10 +24,11 @@ install:
   - conda install dfndarray --use-local
 
 script:
-  - cd test
+  - cd example
   - "python ../waf configure --miniconda=$HOME/miniconda/envs/test-environment"
   - "python ../waf build"
   - build/main
+  - cd ../test
   - python -c 'import dfndarray'
   - python test_array1d.py
   - python test_array2d.py
