@@ -89,6 +89,15 @@ class TestArray1DAllocateMethod(unittest.TestCase, TestArray1DBase):
         f = Array1DComputeTestValue()
         self.a.fill(f)
 
+class TestArray1DAllocateResize(unittest.TestCase, TestArray1DBase):
+    """Test Array1D allocated in constructor method"""
+
+    def setUp(self):
+        self.a = DoubleArray1D()
+        self.a.resize(4)
+        f = Array1DComputeTestValue()
+        self.a.fill(f)
+
 class TestArray1DNotAllocated(unittest.TestCase):
 
     def setUp(self):
@@ -109,9 +118,6 @@ class TestArray1DNotAllocated(unittest.TestCase):
 
     def test_fill(self):
         self.assertRaises(RuntimeError,self.a.fill,7)
-
-    def test_resize(self):
-        self.assertRaises(RuntimeError,self.a.resize,4)
 
 if __name__ == '__main__':
     unittest.main()

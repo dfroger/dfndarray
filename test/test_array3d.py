@@ -44,7 +44,7 @@ class TestArray3DBase:
         self.a.fill(7)
         for i0 in range(2):
             for i1 in range(3):
-                for i2 in range(3):
+                for i2 in range(4):
                     self.assertEqual(self.a[i0,i1,i2], 7)
 
     def test_resize_equal(self):
@@ -141,6 +141,15 @@ class TestArray3DAllocateMethod(unittest.TestCase, TestArray3DBase):
         f = Array3DComputeTestValue()
         self.a.fill(f)
 
+class TestArray3DAllocateResize(unittest.TestCase, TestArray3DBase):
+    """Test Array3D allocated in constructor method"""
+
+    def setUp(self):
+        self.a = DoubleArray3D()
+        self.a.resize(2,3,4)
+        f = Array3DComputeTestValue()
+        self.a.fill(f)
+
 class TestArray3DNotAllocated(unittest.TestCase):
 
     def setUp(self):
@@ -152,7 +161,7 @@ class TestArray3DNotAllocated(unittest.TestCase):
         self.assertRegexpMatches(s, expected_re)
 
     def test_getitem(self):
-        self.assertRaises(RuntimeError,self.a.__getitem__,(0,0))
+        self.assertRaises(RuntimeError,self.a.__getitem__,(0,0,0))
 
     def test_size(self):
         self.assertEqual(self.a.n0(), 0)
@@ -165,9 +174,6 @@ class TestArray3DNotAllocated(unittest.TestCase):
 
     def test_fill(self):
         self.assertRaises(RuntimeError,self.a.fill,7)
-
-    def test_resize(self):
-        self.assertRaises(RuntimeError,self.a.resize,4,8,12)
 
 if __name__ == '__main__':
     unittest.main()

@@ -74,7 +74,9 @@ template <typename T>
 void
 Array1D<T>::resize(size_t n0)
 {
-    DFA_ASSERT(m_data != NULL);
+    if (m_data == NULL) {
+        return allocate(n0);
+    }
 
     m_n0 = n0;
     m_dim[0] = n0;
@@ -175,7 +177,9 @@ template <typename T>
 void
 Array2D<T>::resize(size_t n0, size_t n1)
 {
-    DFA_ASSERT(m_data != NULL);
+    if (m_data == NULL) {
+        return allocate(n0,n1);
+    }
 
     m_n0 = n0;
     m_n1 = n1;
@@ -291,7 +295,9 @@ template <typename T>
 void
 Array3D<T>::resize(size_t n0, size_t n1, size_t n2)
 {
-    DFA_ASSERT(m_data != NULL);
+    if (m_data == NULL) {
+        return allocate(n0,n1,n2);
+    }
 
     m_n0 = n0;
     m_n1 = n1;
