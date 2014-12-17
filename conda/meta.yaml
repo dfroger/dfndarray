@@ -4,19 +4,19 @@ package:
 
 requirements:
   build:
-    - python ==2.7.8
-    #- swig # todo: use conda SWIG (currently bugged)
+    - python 2.7*
+    - swig-python
     - numpy
   run:
-    - python ==2.7.8
+    - python 2.7*
     - numpy
 
 source:
   git_url: https://github.com/dfroger/dfndarray
 
 build:
-  number: 0
-  binary_relocation: false
+  number: 1
+  binary_relocation: true
 
 about:
   home: https://github.com/dfroger/dfndarray
