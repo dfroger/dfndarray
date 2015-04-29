@@ -44,4 +44,15 @@ int main()
     }
 
     cout << "A(2,1,0)    : " << A(2,1,0) << endl;
+
+    // An exception with be catched fi example.cxx is compiled with
+    // -DDFNDARRAY_RUNTIME_CHECK, otherwise a segmentation fault
+    // occurs, or a wrong result is returned.
+    try {
+        cout << A(10,10,10) << endl;
+    } catch (dfndarray::DFArrayError e) {
+        cout << "Exception catched: " << e.what() << endl;
+    }
+
+    return 0;
 }

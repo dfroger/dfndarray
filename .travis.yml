@@ -20,24 +20,16 @@ install:
   - conda install conda-build
   - conda create -n test-environment python=2.7 
   - source activate test-environment
-  - conda build conda
+  - conda build conda-recipe
   - conda install dfndarray --use-local
 
 script:
   - cd example
   - "python ../waf configure --miniconda=$HOME/miniconda/envs/test-environment"
-  - "python ../waf build"
-  - build/main
+  - "python ../waf build_debug"
+  - build/debug/main
   - cd ../test
   - python -c 'import dfndarray'
   - python test_array1d.py
   - python test_array2d.py
   - python test_array3d.py
-
-env:
-  global:
-    - secure: "bvKL/TaXMu7RMKt02fey/8ewGh6v7+TvbcOkydERnS9UL/eBqjIazeS4seCGdPbxx5IcZfH0ovu0eqvAWOFk8UHbzBPjRhwa5uXvrvFAnmR3XMgeoxyxkGpzL1YWzJD6KQi2SvjIEWRE6nNHT4jv3IiwPNWHbWlBCmlsvWq995g="
-    - secure: "efX//1TLwHg8u4Nzf5vtEPS/B06AzFVnnAGv7phOzDg9Ou5KVPkzi+UIvxudjCLrZOc+1x7aUzxfxMsfF9pFVb9vkUNmJosqu4Ap1TK8ovq0Lp6oQ/nM72ADWUcHEk070ATs1iQZxXt5oucDl1WECjKVweaMfMNW1dwxDGmIQxI="
-    - secure: "Pz9lZHH+BOPVdQIAdFq/lRR1iFqrksKmB4BUc7bQmhocq9HUB1pn3dMj04lzVBJGuSIhdfXdimSs9cN6Q/dUqxkQHxYNtG1fXADm0IgpQahvWC9oOKnlP7yqg1Th3f1rBMnf04WBQTE+O7QHlT04E80Pq5w0qH9CFGSTwJCWLDU="
-
-after_success: curl --ftp-create-dirs --upload-file $HOME/miniconda/pkgs/dfndarray-0.1.0-0.tar.bz2 --user $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST/conda/dfndarray/dfndarray-0.1.0-0.tar.bz2

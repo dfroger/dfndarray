@@ -3,9 +3,6 @@ dfndarray
 
 Minimalist C++ multidimensional array implementation.
 
-
-    $ cat example.cxx
-
 Example source code:
 
     #include "dfndarray.hxx"
@@ -34,19 +31,32 @@ Example source code:
         }
 
         cout << "A(2,1,0)    : " << A(2,1,0) << endl;
+
+        // An exception with be catched fi example.cxx is compiled with
+        // -DDFNDARRAY_RUNTIME_CHECK, otherwise a segmentation fault
+        // occurs, or a wrong result is returned.
+        try {
+            cout << A(10,10,10) << endl;
+        } catch (dfndarray::DFArrayError e) {
+            cout << "Exception catched: " << e.what() << endl;
+        }
+
+        return 0;
     }
+
 
 Compile:
 
-    $ make
+    $ ../waf build_debug
 
 Run example:
 
-    $ ./example.x
+    $ ./build/debug/main
 
 Result:
 
-    A           : <Array3d of shape (4,2,3)>
+    A           : <Array3D of shape (4,2,3) at 0x90b010>
     A.dim(0)    : 4
     A(2,1,0)    : 210
     A(2,1,0)    : 0
+    Exception catched: /local/froger/miniconda/envs/test-dfndarrray/include/dfndarray.hxx:330: expected 'i0 < m_n0', but got: '10 >= 4'.

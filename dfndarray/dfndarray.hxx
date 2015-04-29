@@ -23,15 +23,19 @@ Home page: https://github.com/dfroger/dfndarray
 
 #include <iostream>
 
-// Error management macro, deactivated with DF_NO_RUNTIME_CHECK preprocessor macro.
-#ifdef DF_NO_RUNTIME_CHECK
-#define DFA_ASSERT(test)
-#define DFA_ASSERT_EQUAL(a,b)
-#define DFA_ASSERT_LT(a,b)
-#else
+// Runitime error checking, activated with -DDFNDARRAY_RUNTIME_CHECK flag.
+// Note that these macros are only used in dfndarray.hxx and dfndarray.txx,
+// not in dfndarray.cxx. As a consequence, there is no need to package
+// two debug/release builds of dfndarray. Instead, the code using dfndarray
+// activates the flag  -DDFNDARRAY_RUNTIME_CHECK or not.
+#ifdef DFNDARRAY_RUNTIME_CHECK
 #define DFA_ASSERT(test)  if (!(test)) dfa_assert(#test,__FILE__,__LINE__);
 #define DFA_ASSERT_EQUAL(a,b)  dfa_assert_equal(#a,#b,a,b,__FILE__,__LINE__);
 #define DFA_ASSERT_LT(a,b)  dfa_assert_lt(#a,#b,a,b,__FILE__,__LINE__);
+#else
+#define DFA_ASSERT(test)
+#define DFA_ASSERT_EQUAL(a,b)
+#define DFA_ASSERT_LT(a,b)
 #endif
 
 

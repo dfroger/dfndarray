@@ -1,5 +1,23 @@
 from os.path import join
 
+def init(ctx):
+    from waflib.Build import BuildContext, CleanContext, InstallContext, UninstallContext
+
+    if ctx.options.out:
+        ctx.options.out = realpath(ctx.options.out)
+
+    for x in 'debug release'.split():
+        for y in (BuildContext, CleanContext, InstallContext, UninstallContext):
+            name = y.__name__.replace('Context','').lower()
+            class tmp(y):
+                cmd = name + '_' + x
+                variant = x
+
+    def buildall(ctx):
+        import waflib.Options
+        for x in ['build_debug', 'build_release']:
+            waflib.Options.commands.insert(0, x)
+
 def options(opt):
     opt.load('compiler_cxx')
     opt.add_option('--miniconda', action='store', default='',
@@ -15,7 +33,22 @@ def configure(conf):
     conf.check(header_name='dfndarray.hxx', features='cxx cprogram')
     conf.check_cxx(lib='dfndarray')
 
+    orig_env = conf.env
+
+    # debug env variant
+    conf.setenv('debug', env=orig_env.derive())
+    conf.env.prepend_value('CXXFLAGS',['-O0', '-g', '-DDFNDARRAY_RUNTIME_CHECK',])
+
+    # release env variant
+    conf.setenv('release', env=orig_env.derive())
+    conf.env.prepend_value('CXXFLAGS',['-O3', '-g', '-DNDEBUG',])
+
+
 def build(bld):
+
+    if not bld.variant:
+        bld.fatal('Call "waf build_debug" or "waf build_release" (same for install and clean)')
+
     bld.program(
         source='example.cxx',
         target='main',

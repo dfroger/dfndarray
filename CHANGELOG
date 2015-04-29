@@ -6,3 +6,7 @@
   - Add Python bindings.
   - Add unit tests.
   - resize now allocates unallocated array, instead of being an error.
+
+0.2.0:
+  - Deactivate run time error checking by default for C++, always activated
+    for Python API.

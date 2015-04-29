@@ -44,8 +44,7 @@ def build(bld):
         export_includes = '.',
         vnum = VERSION,
         name = 'dfndarray',
-        cxxflags = ['-g','-O0'],
-        #cxxflags = ['-O3','-DNDEBUG'],
+        cxxflags = ['-O3','-DNDEBUG'],
     )
 
     bld.install_files('${PREFIX}/include', 'dfndarray.hxx dfndarray.txx')
@@ -59,8 +58,7 @@ def build(bld):
             includes = '.',
             vnum = VERSION,
             use  = 'dfndarray',
-            #cxxflags = ['-O3','-DNDEBUG'],
-            cxxflags = ['-g','-O0'],
+            cxxflags = ['-g','-O3', '-DDFNDARRAY_RUNTIME_CHECK'],
         )
         python_site_package = '${PREFIX}/lib/python%s/site-packages' % bld.env['PYTHON_VERSION']
         bld.install_files(python_site_package, 'dfndarray.py')
