@@ -14,7 +14,7 @@ requirements:
 source:
   path: ..
   #fn: dfndarray-0.2.0.tar.gz
-  #url: https://github.com/dfroger/dfndarray/archive/0.2.0.tar.gz
+  #url: https://github.com/dfroger/dfndarray/archive/v0.2.0.tar.gz
 
 build:
   number: 0

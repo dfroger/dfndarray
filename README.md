@@ -59,4 +59,4 @@ Result:
     A.dim(0)    : 4
     A(2,1,0)    : 210
     A(2,1,0)    : 0
-    Exception catched: /local/froger/miniconda/envs/test-dfndarrray/include/dfndarray.hxx:330: expected 'i0 < m_n0', but got: '10 >= 4'.
+    Exception catched: /local/froger/miniconda/envs/test-dfndarray/include/dfndarray.hxx:330: expected 'i0 < m_n0', but got: '10 >= 4'.
