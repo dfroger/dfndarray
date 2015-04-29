@@ -32,7 +32,7 @@ Example source code:
 
         cout << "A(2,1,0)    : " << A(2,1,0) << endl;
 
-        // An exception with be catched fi example.cxx is compiled with
+        // An exception will be catched if example.cxx is compiled with
         // -DDFNDARRAY_RUNTIME_CHECK, otherwise a segmentation fault
         // occurs, or a wrong result is returned.
         try {
