@@ -1,0 +1,5 @@
+package: dfndarray
+script:
+  - conda config --add channels https://conda.binstar.org/dfroger
+  - conda build .
+build_targets: conda
