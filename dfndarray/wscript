@@ -13,8 +13,14 @@ def options(opt):
     opt.add_option('--python-bindings', action='store_true', default=False,
             help='Generate Python bindings using SWIG (default: False)')
 
+    opt.add_option('--enable-shared', action='store_true', default=False,
+            help='Build shared library. --python-bindings automatically '
+                 'activates --enable-shared (default: False)')
+
 def configure(conf):
     conf.load('compiler_cxx')
+
+    conf.env.ENABLE_SHARED = conf.options.enable_shared
 
     if conf.options.python_bindings:
         conf.env.PYTHON_BINDINGS = True
@@ -32,20 +38,25 @@ def configure(conf):
         #python_inc = join(miniconda_dir,'include','python2.7')
         #conf.env.prepend_value('INCLUDES', [python_inc,numpy_inc])
         conf.env.prepend_value('INCLUDES', [numpy_inc])
+        conf.env.ENABLE_SHARED = True
     else:
         conf.env.PYTHON_BINDINGS = False
 
 def build(bld):
-    bld(
-        features = 'cxx cxxshlib',
-        source = 'dfndarray.cxx',
-        target = 'dfndarray',
-        includes = '.',
-        export_includes = '.',
-        vnum = VERSION,
-        name = 'dfndarray',
-        cxxflags = ['-O3','-DNDEBUG'],
-    )
+    args = {
+        'features' : 'cxx',
+        'source' : 'dfndarray.cxx',
+        'target' : 'dfndarray',
+        'includes' : '.',
+        'export_includes' : '.',
+        'vnum' : VERSION,
+        'name' : 'dfndarray',
+        'cxxflags' : ['-O3','-DNDEBUG'],
+    }
+
+    bld.stlib(**args)
+    if bld.env.ENABLE_SHARED:
+        bld.shlib(**args)
 
     bld.install_files('${PREFIX}/include', 'dfndarray.hxx dfndarray.txx')
 

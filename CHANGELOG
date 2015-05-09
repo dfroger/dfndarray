@@ -10,3 +10,6 @@
 0.2.0:
   - Deactivate run time error checking by default for C++, always activated
     for Python API.
+
+0.2.1:
+  - build static library
