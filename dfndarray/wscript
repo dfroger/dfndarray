@@ -59,6 +59,7 @@ def build(bld):
         bld.shlib(**args)
 
     bld.install_files('${PREFIX}/include', 'dfndarray.hxx dfndarray.txx')
+    bld.install_files('${PREFIX}/lib', 'libdfndarray.a')
 
     if bld.env.PYTHON_BINDINGS:
         bld(
