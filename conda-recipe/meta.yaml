@@ -4,11 +4,11 @@ package:
 
 requirements:
   build:
-    - python 2.7*
-    - swig-python
+    - python
+    - swig
     - numpy
   run:
-    - python 2.7*
+    - python
     - numpy
 
 source:
@@ -22,3 +22,4 @@ build:
 about:
   home: https://github.com/dfroger/dfndarray
   license: GPL
+  summary: Minimalist C++ multidimensional array implementation.
