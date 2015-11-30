@@ -1,4 +1,12 @@
+export MACOSX_DEPLOYMENT_TARGET=10.7
+export CC=clang
+export CXX=clang++
+
+unset CXXFLAGS
+unset CFLAGS
+unset LDFLAGS
+
 cd dfndarray
-$PYTHON ../waf configure --prefix=$PREFIX --python-bindings
-$PYTHON ../waf build
-$PYTHON ../waf install
+waf configure --prefix=$PREFIX --python-bindings
+waf build
+waf install
