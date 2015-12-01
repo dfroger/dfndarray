@@ -32,11 +32,11 @@ def options(opt):
             help='Build shared library. --python-bindings automatically '
                  'activates --enable-shared (default: False)')
 
-    opt.add_option('--cflags', action='store', default=[], help='Additional C flags')
+    opt.add_option('--cflags', action='store', default="", help='Additional C flags')
 
-    opt.add_option('--cxxflags', action='store', default=[], help='Additional C++ flags')
+    opt.add_option('--cxxflags', action='store', default="", help='Additional C++ flags')
 
-    opt.add_option('--ldflags', action='store', default=[], help='Additional linker flags')
+    opt.add_option('--ldflags', action='store', default="", help='Additional linker flags')
 
     opt.add_option('--remove-isysroot', action='store_true', default=False,
         help='Remove -isysroot C/C++ flag that may come with python-config --cflags')

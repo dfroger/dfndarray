@@ -6,10 +6,12 @@ language: cpp
 
 compiler:
   - gcc
+  - clang
 
 before_install:
-  - wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
-  - bash Miniconda-latest-Linux-x86_64.sh -b -p $HOME/miniconda
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then wget -o miniconda.sh https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh; fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then curl -o miniconda.sh -L https://repo.continuum.io/miniconda/Miniconda-latest-MacOSX-x86_64.sh; fi
+  - bash miniconda.sh -b -p $HOME/miniconda
   - export PATH="$HOME/miniconda/bin:$PATH"
   - conda config --set always_yes yes --set changeps1 no
   - conda update conda
