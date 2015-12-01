@@ -49,7 +49,10 @@
     char* __str__() {
         std::ostringstream msg;
         msg << *($self);
-        return (char*) msg.str().c_str();
+        msg.flush();
+        static char tmp[256];
+        strcpy(tmp, msg.str().c_str() );
+        return &tmp[0];
     }
 }
 
@@ -67,7 +70,10 @@
     char* __str__() {
         std::ostringstream msg;
         msg << *($self);
-        return (char*) msg.str().c_str();
+        msg.flush();
+        static char tmp[256];
+        strcpy(tmp, msg.str().c_str() );
+        return &tmp[0];
     }
 }
 
@@ -85,7 +91,10 @@
     char* __str__() {
         std::ostringstream msg;
         msg << *($self);
-        return (char*) msg.str().c_str();
+        msg.flush();
+        static char tmp[256];
+        strcpy(tmp, msg.str().c_str() );
+        return &tmp[0];
     }
 }
 

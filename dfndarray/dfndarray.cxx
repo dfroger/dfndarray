@@ -84,6 +84,7 @@ dfa_assert_lt(const char* expr_a, const char* expr_b, size_t a, size_t b,
     ostringstream stream;
     stream << "expected '" << expr_a << " < " << expr_b << "'"
            << ", but got: '" << a << " >= " << b << "'.";
+    stream.flush();
     DFArrayError err(stream.str().c_str(),file,line);
     throw err;
   }
