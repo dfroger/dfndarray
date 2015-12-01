@@ -8,25 +8,20 @@ compiler:
   - gcc
 
 before_install:
-  - wget http://repo.continuum.io/miniconda/Miniconda-3.7.0-Linux-x86_64.sh -O miniconda.sh
-  - bash miniconda.sh -b -p $HOME/miniconda
+  - wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
+  - bash Miniconda-latest-Linux-x86_64.sh -b -p $HOME/miniconda
   - export PATH="$HOME/miniconda/bin:$PATH"
   - conda config --set always_yes yes --set changeps1 no
-  - conda config --add channels http://conda.binstar.org/dfroger
   - conda update conda
   - conda install conda-build
-  - conda create -n test-environment python=2.7 
-  - hash -r
-  - conda info -a
 
 install:
-  - source activate test-environment
-  - conda build conda-recipe
+  - conda build --python=2.7 conda-recipe
   - conda install dfndarray --use-local
 
 script:
   - cd example
-  - "python ../waf configure --miniconda=$HOME/miniconda/envs/test-environment"
+  - "python ../waf configure --miniconda=$HOME/miniconda"
   - "python ../waf build_debug"
   - build/debug/main
   - cd ../test
