@@ -106,6 +106,7 @@ def build(bld):
             includes = '.',
             vnum = VERSION,
             use  = 'dfndarray',
+            cxxflags = ['-O3', '-DDFNDARRAY_RUNTIME_CHECK'],
 	    rpath = ['$ORIGIN',],
         )
         python_site_package = '${PREFIX}/lib/python%s/site-packages' % bld.env['PYTHON_VERSION']
