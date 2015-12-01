@@ -88,7 +88,6 @@ def build(bld):
         'export_includes' : '.',
         'vnum' : VERSION,
         'name' : 'dfndarray',
-        'cxxflags' : ['-O3','-DNDEBUG'],
     }
 
     bld.stlib(**args)
@@ -107,7 +106,7 @@ def build(bld):
             includes = '.',
             vnum = VERSION,
             use  = 'dfndarray',
-            cxxflags = ['-g','-O3', '-DDFNDARRAY_RUNTIME_CHECK'],
+	    rpath = ['$ORIGIN',],
         )
         python_site_package = '${PREFIX}/lib/python%s/site-packages' % bld.env['PYTHON_VERSION']
         bld.install_files(python_site_package, 'dfndarray.py')
