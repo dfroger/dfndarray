@@ -9,7 +9,7 @@ compiler:
   - clang
 
 before_install:
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then wget -o miniconda.sh https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh; fi
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then wget -O miniconda.sh https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh; fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then curl -o miniconda.sh -L https://repo.continuum.io/miniconda/Miniconda-latest-MacOSX-x86_64.sh; fi
   - bash miniconda.sh -b -p $HOME/miniconda
   - export PATH="$HOME/miniconda/bin:$PATH"
@@ -23,6 +23,8 @@ install:
 
 script:
   - cd example
+  - python --version
+  - which python
   - "python ../waf configure --miniconda=$HOME/miniconda"
   - "python ../waf build_debug"
   - build/debug/main
