@@ -13,3 +13,7 @@
 
 0.2.1:
   - build static library
+
+0.2.2:
+  - Fix flushing message for python api on OSX
+  - Workaround for python-config returned flags

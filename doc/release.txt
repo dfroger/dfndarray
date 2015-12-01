@@ -3,7 +3,6 @@
 - Update version number in:
   - dfndarray/wscript
   - .travis.yml
-  - conda/meta.yml
 
 Commit and tag:
   - git commit -m 'Bump version number to X.X.X'

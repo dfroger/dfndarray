@@ -1,6 +1,6 @@
 package:
   name: dfndarray
-  version: 0.2.1
+  version: 0.2.2
 
 requirements:
   build:
@@ -12,13 +12,11 @@ requirements:
     - numpy
 
 source:
-  path: ..
-  #fn: dfndarray-0.2.1.tar.gz
-  #url: https://github.com/dfroger/dfndarray/archive/v0.2.1.tar.gz
+  fn: dfndarray-0.2.2.tar.gz
+  url: https://github.com/dfroger/dfndarray/archive/0.2.2.tar.gz
 
 build:
-  number: 0 # [linux]
-  number: 1 # [osx]
+  number: 0
   binary_relocation: true
 
 about:
